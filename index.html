@@ -22,8 +22,10 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-6 d-flex justify-content-center">
-        <div style="display: inline-block;" id="board-container">
+      <div class="col-lg-6 d-flex justify-content-center">
+        <div id="board-container" class="position-relative">
+          <div class="position-absolute" id="border">
+          </div>
           <div class="row">
             <div class="square text-center" data-index="0"></div>
             <div class="square text-center" data-index="1"></div>
@@ -41,9 +43,9 @@
           </div>
         </div>
       </div>
-      <div class="col-6">
-        <div class="container-fluid d-flex justify-content-between align-items-center" style="gap: 1rem">
-          <div class="card text-left" style="width: 100%">
+      <div class="col-lg-6">
+        <div class="container-fluid cards-container">
+          <div class="card player-card-container">
             <div class="card-body player-card">
               <h5 class="card-title display-name">Nome: </h5>
               <h6 class="card-subtitle mb-2 text-muted display-title">Título: </h6>
@@ -60,7 +62,7 @@
           <div>
             <h4>VS</h4>
           </div>
-          <div class="card text-left" style="width: 100%">
+          <div class="card player-card-container">
             <div class="card-body player-card">
               <h5 class="card-title display-name">Nome: </h5>
               <h6 class="card-subtitle mb-2 text-muted display-title">Título: </h6>
@@ -85,39 +87,9 @@
       </div>
     </div>
 
-    <h2 class="text-center mt-4" id="result-text">O vencedor é </h2>
-
-    <hr class="my-5" />
-    <h2>Histórico</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="alert alert-success mt-4" id="result-alert" role="alert">
+      <h3 class="text-center" id="result-text">O vencedor é </h3>
+    </div>
 
   </div>
 
@@ -128,33 +100,33 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel">Editar jogador 1</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form>
+        <form id="edit-form">
           <div class="modal-body">
             <div class="mb-3">
               <label for="name" class="col-form-label">Nome:</label>
               <input type="text" class="form-control" id="name">
             </div>
             <div class="row">
-              <div class="col">
+              <div class="col-sm-6">
                 <label for="title" class="col-form-label">Título:</label>
                 <select class="form-select" id="title">
-                  <option selected>Open this select menu</option>
-                  <option value="The humble">The humble</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option selected value="O humilde">O humilde</option>
+                  <option value="O destruidor">O destruidor</option>
+                  <option value="O vencedor">O vencedor</option>
+                  <option value="O andarilho">O andarilho</option>
                 </select>
               </div>
-              <div class="col">
+              <div class="col-sm-6">
                 <label for="email" class="col-form-label">E-mail:</label>
                 <input type="email" class="form-control" id="email">
               </div>
             </div>
             <div class="row">
-              <div class="col">
+              <div class="col-sm-6">
                 <label for="age" class="col-form-label">Idade:</label>
                 <input type="number" class="form-control" id="age">
               </div>
-              <div class="col">
+              <div class="col-sm-6">
                 <label for="color" class="col-form-label">Cor do Nome:</label>
                 <input type="color" class="form-control form-control-color" id="color" value="#563d7c"
                   title="Choose your color">

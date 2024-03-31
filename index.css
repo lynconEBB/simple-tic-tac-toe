@@ -1,15 +1,37 @@
 .square {
     width: 100px;
     height: 100px;
-    border: 2px solid black;
+    border: 0.2em solid black;
     line-height: 100px;
 }
 
 .playing .square:hover {
-    background-color: beige;
     cursor: pointer;
 }
-
-#result-text {
+#result-alert {
     display: none;
+}
+
+#board-container {
+    display: inline-block;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+#border {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    left: -12px;
+    border: 10px white solid;
+    pointer-events: none;
+}
+
+.player-card-container {
+    width: 100%;
 }

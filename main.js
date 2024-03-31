@@ -1,17 +1,17 @@
 const players = [
     {
-        name: "Player1",
+        name: "Jogador 1",
         age: 12,
         email: "test@email.com",
-        title: "The humble",
+        title: "O humilde",
         color: "#BE3B1F",
         symbol: "❌"
     },
     {
-        name: "Player2",
+        name: "Jogador 2",
         age: 33,
         email: "test@email.com",
-        title: "The humble",
+        title: "O humilde",
         color: "#2A54FB",
         symbol: "⭕"
     }
@@ -22,6 +22,9 @@ const squares = document.querySelectorAll(".square");
 const startBtn = document.querySelector("#start-btn");
 const resultText = document.querySelector("#result-text");
 const boardContainer = document.querySelector("#board-container");
+const resultAlert = document.querySelector("#result-alert");
+const editForm = document.querySelector("#edit-form");
+
 let game = null;
 
 class Game {
@@ -30,7 +33,7 @@ class Game {
         this.status = "playing";
         this.board = ['', '', '', '', '', '', '', '', ''];
         this.players = players;
-        this.currentIndex = 0;
+        this.currentIndex = Math.round(Math.random());;
         this.winner = null;
     }
 
@@ -60,11 +63,15 @@ class Game {
 
         if (this.winner !== null) {
             resultText.innerHTML = `${this.winner.name} venceu!`
+            resultAlert.classList.remove("alert-warning");
+            resultAlert.classList.add("alert-success");
         } else {
+            resultAlert.classList.remove("alert-success");
+            resultAlert.classList.add("alert-warning");
             resultText.innerHTML = "Empate!!"
         }
-        resultText.style.display = "block";
-        boardContainer.className = "";
+        resultAlert.style.display = "block";
+        boardContainer.classList.remove("playing");
     }
 
     checkWinner() {
@@ -101,8 +108,8 @@ startBtn.addEventListener("click", () => {
         square.style.backgroundColor = null;
         square.innerHTML = "";
     });
-    resultText.style.display = "none";
-    boardContainer.className = "playing";
+    resultAlert.style.display = "none";
+    boardContainer.classList.add("playing");
 });
 
 squares.forEach(square => {
@@ -110,6 +117,16 @@ squares.forEach(square => {
         if (game !== null) {
             const index = event.target.getAttribute("data-index");
             game.play(index, event);
+        }
+    });
+    square.addEventListener("mouseover", event => {
+        if (game !== null && game.status !== "finished") {
+            event.target.style.backgroundColor = game.players[game.currentIndex].color;
+        }
+    });
+    square.addEventListener("mouseout", event => {
+        if (game !== null && game.status !== "finished") {
+            event.target.style.backgroundColor = null;
         }
     });
 });
@@ -134,7 +151,7 @@ function onEditButtonClick(event) {
     modal.show();
 }
 
-document.querySelector("#save-btn").addEventListener("click", event => {
+editForm.addEventListener("submit", event => {
     event.preventDefault();
     const player = players[currentPlayerIndex];
     player.name = document.querySelector("#name").value;
