@@ -1,0 +1,15 @@
+.square {
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    line-height: 100px;
+}
+
+.playing .square:hover {
+    background-color: beige;
+    cursor: pointer;
+}
+
+#result-text {
+    display: none;
+}
