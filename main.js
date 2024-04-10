@@ -163,16 +163,16 @@ editForm.addEventListener("submit", event => {
     modal.hide();
 });
 
-function updateCardsInfo() {
+const updateCardsInfo = function() {
     const cards = document.querySelectorAll(".player-card");
     let i = 0;
     for (let card of cards) {
         const nameDisplay = card.querySelector(".display-name");
         nameDisplay.innerHTML = `Nome: ${players[i].name}`;
         nameDisplay.style.color = players[i].color;
-        card.querySelector(".display-age").innerHTML = `Nome: ${players[i].age}`;
-        card.querySelector(".display-title").innerHTML = `Nome: ${players[i].title}`;
-        card.querySelector(".display-email").innerHTML = `Nome: ${players[i].email}`;
+        card.querySelector(".display-age").innerHTML = `Idade: ${players[i].age}`;
+        card.querySelector(".display-title").innerHTML = `Título: ${players[i].title}`;
+        card.querySelector(".display-email").innerHTML = `E-mail: ${players[i].email}`;
         i++;
     }
 }
